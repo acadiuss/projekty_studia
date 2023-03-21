@@ -47,7 +47,7 @@ public:
     }
 };
 
-// Klasa reprezentująca magazyn, przechowująca produkty i ich stany
+// Klasa reprezentująca magazyn, przechowująca produkty i is  ch stany
 class Warehouse {
 private:
     map<string, Product*> products;
