@@ -1,0 +1,32 @@
+Narty:
+dziecko | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dziecko | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+dorosly | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dorosly | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+---------------------------------------------------
+Snowboard:
+dziecko | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dziecko | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+dorosly | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dorosly | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+---------------------------------------------------
+Buty:
+dziecko | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dziecko | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+dorosly | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dorosly | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+---------------------------------------------------
+Kask:
+dziecko | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dziecko | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+dorosly | 1 godzina  | 10  zl (kazda nastepna 15zl)
+dorosly | caly dzien | 100 zl (kazdy nastepny 80zl)
+---------------------------------------------------
+---------------------------------------------------
