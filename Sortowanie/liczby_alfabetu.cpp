@@ -3,18 +3,20 @@
 
 using namespace std;
 
-void generateCombinations(int n, string current) {
+void generateCombinations(int n, string current) 
+{
     if (n == 0) {
         cout << current << endl;
     } else { 
         for (char letter = 'a'; letter <= 'z'; letter++) {
-            string newCurrent = current + letter;
+            string newCurrent = current + letter ;
             generateCombinations(n - 1, newCurrent);
         }
     }
 }
 
-int main() {
+int main() 
+{
     int length = 26; // długość kombinacji
     generateCombinations(length, "");
     system("pause");
