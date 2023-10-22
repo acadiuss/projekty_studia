@@ -119,3 +119,9 @@ zad . oparta na liscie kolejka FIFO head i tail poczatek koleji i koniec, jak do
 zad stos oparty na tablicy 
 
 zad reprezentacja kolejkowa na fifo  za=lozonosc stala po usówaniu bity zostaja w danej pa przy liniowej zozonosci  przerzucamy wszystko na pozctek
+
+
+
+
+stos oparty na liscie 
+i kolejka oparta na liscie 
