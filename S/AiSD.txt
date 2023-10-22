@@ -1,0 +1,121 @@
+Wyszukiwanie
+
+
+
+Zadanie 1:
+
+Dla n liczb naturalnych, przechowywanych w tablicy S, proszę zaimplementować algorytm wyszukiwania liniowego dla problemu stwierdzenia czy szukana wartość x występuje w tablicy. Algorytm należy zaimplementować w postaci funkcji: int linearSearch1(int* S, int n, int x) zwracającej indeks pierwszego wystąpienia x w S lub -1 jeśli x nie występuje w S. Proszę przetestować poprawność działania algorytmu (należy sprawdzić działanie algorytmu co najmniej dla wartości pierwszej, ostatniej, dowolnej innej oraz dla przypadku braku x).
+
+Szablon rozwiązania:
+
+//Zadanie 1
+
+void print(int* S, int n){              //wyświetla dane na monitorze
+}
+
+int linearSearch1(int* S, int n, int x){
+}
+
+
+main():
+
+//Zadanie 1 - test
+cout<<"Zadanie 1 - test"<<endl;
+{
+int n = 20;        //przykładowy rozmiar
+int *S = new int[n]{/*  dane do testowania */};
+int x;
+print(S,n);
+//wczytanie/ustawienie x dla przypadku 1
+cout<<endl<<"Przypadek 1: x na pozycji 0 - "<<linearSearch1(S,n,x);  //x na pozycji 0
+//...
+}
+
+Zadanie 2:
+
+Dla n liczb naturalnych, przechowywanych w tablicy S, proszę zaimplementować algorytm wyszukiwania binarnego dla problemu stwierdzenia czy szukana wartość x występuje w tablicy. Algorytm należy zaimplementować w postaci funkcji: int binarySearch1(int* S, int n, int x) zwracającej indeks wystąpienia x w S lub -1 jeśli x nie występuje w S. Proszę przetestować poprawność działania algorytmu (należy uwzględnić przypadek znalezienia x w pierwszym kroku, ostatnim, dowolnych i braku x w S).
+
+
+Szablon rozwiązania:
+
+//Zadanie 2
+
+int binarySearch1(int* S, int n, int x){   //wersja iteracyjna
+
+}
+
+
+main():
+
+//Zadanie 2 - test
+cout<<"Zadanie 2 - test"<<endl;
+{
+int n = 20;        //przykładowy rozmiar
+int *S new int[n]{/*  dane do testowania */};
+int x;
+print(S,n);
+//wczytanie/ustawienie x dla przypadku 1
+cout<<endl<<"Przypadek 1: x znalezione w pierwszym kroku (pozycja ...) "<<binarySearch1(S,n,x);  //x na pozycji .....
+//...
+}
+
+Zad 3 
+interpeacyjne zrób sam 
+
+
+***zad4 
+implementacja ilosci operacji do powyzszych kodów 
+
+
+
+zlozonosc liniowa i logarytinczna 
+
+
+
+Zadanie 5:
+
+Dla stosu opartego na koncepcji jednokierunkowej listy wiązanej (reprezentacja oparta na wskaźnikach) proszę zaimplementować wskazane w szablonie operacje. Proszę przetestować poprawność ich działania według schematu dla zadania 1.
+
+Szablon rozwiązania:
+
+//Zadanie 2
+class Element{
+    private:
+        int v;
+        Element* next;
+    public:
+        Element(int x, Element* next);
+        int getValue();
+        Element* getNext();
+        void setNext(Element* p);
+};
+
+class LinkedStack{
+    private:
+        Element* top;
+    public:
+        LinkedStack();        //tworzy pusty stos
+        bool empty();
+        void push(int x);  //wstawia daną na stos
+        int peek();            //zwraca daną ze stosu
+        void pop();            //usuwa element ze stosu
+    //    void clear();       //usuwa wszystkie elementy ze stosu
+        friend std::ostream& operator<<(std::ostream& out, LinkedStack* s); //wyświetla zawartość całego stosu
+        ~LinkedStack();
+};
+main():
+
+//Zadanie 2 - test
+
+cout<<endl<<"Zadanie 2 - test"<<endl;
+LinkedStack* s = new LinkedStack();
+//...
+
+**********************************************************
+cwiczenie na 22.10.23 
+
+zad . oparta na liscie kolejka FIFO head i tail poczatek koleji i koniec, jak dodajemy to do tail pobieramy z head 
+
+zad stos oparty na tablicy 
+
+zad reprezentacja kolejkowa na fifo  za=lozonosc stala po usówaniu bity zostaja w danej pa przy liniowej zozonosci  przerzucamy wszystko na pozctek
