@@ -137,3 +137,157 @@ int main() {
 
     return 0;
 }
+
+/*version 2.0: #include <iostream>
+#include <ostream>
+
+class MinHeap {
+    private:
+        int* kopiec;
+        int capacity;
+        int size;
+    public:
+        MinHeap(int c);            //tworzy pusty kopiec o pojemności c
+        MinHeap();                //konstruktor do testów kopca - należy utworzyć kopiec z następującą zawartością: 1, 2, 4, 6, 5, 4, 7, 7, 7, 9, 6
+        bool empty();
+        bool full();
+        int getLeft(int i);                    //zwraca pozycję lewego syna
+        int getRight(int i);                //zwraca pozycję prawego syna
+        int getParent(int i);                //zwraca pozycję ojca
+        int getSize();                        //zwraca rozmiar kopca
+        void setSize(int s);                //ustawia rozmiar kopca na s
+        int getValue(int i);                //zwraca wartość z pozycji i
+        void setValue(int i, int x);        //ustawia wartość x na pozycji i
+        void bottomUp(int i);                //przywraca własność kopca metodą wynurzania
+        void topDown(int i);                //przywraca własność kopca metodą zatapiania
+        friend std::ostream& operator<<(std::ostream& out, MinHeap& h);
+};
+
+MinHeap::MinHeap(int c) {
+    capacity = c;
+    kopiec = new int[capacity];
+    size = 0;
+}
+
+MinHeap::MinHeap() {
+    capacity = 11;
+    kopiec = new int[capacity]{1, 2, 4, 6, 5, 4, 7, 7, 7, 9, 6};
+    size = capacity;
+}
+
+bool MinHeap::empty() {
+    return size == 0;
+}
+
+bool MinHeap::full() {
+    return size == capacity;
+}
+
+int MinHeap::getLeft(int i) {
+    if (2 * i + 1 < size) {
+        return 2 * i + 1;
+    } else {
+        return -1; // lub inny sposób obsługi przypadku
+    }
+}
+
+int MinHeap::getRight(int i) {
+    if (2 * i + 2 < size) {
+        return 2 * i + 2;
+    } else {
+        return -1; // lub inny sposób obsługi przypadku
+    }
+}
+
+int MinHeap::getParent(int i) {
+    if (i == 0) {
+        return -1; // -1 nie reprezentuje indeksu tablicy
+    } else {
+        return (i - 1) / 2;
+    }
+}
+
+int MinHeap::getSize() {
+    return size;
+}
+
+void MinHeap::setSize(int s) {
+    size = s;
+}
+
+int MinHeap::getValue(int i) {
+    return kopiec[i];
+}
+
+void MinHeap::setValue(int i, int x) {
+    kopiec[i] = x;
+}
+
+void MinHeap::bottomUp(int i) 
+{
+    if(i<=0)
+    {
+        return;//dla jedno elementowego ,kopiec jest posortowany
+    }
+    int parent=getParent(i);
+
+    if(kopiec[i]>kopiec[parent])
+    {
+        if (kopiec[i] > kopiec[parent]) 
+        {
+        // Jeśli wartość węzła jest większa niż jego rodzica, zamień je miejscami
+        std::swap(kopiec[i], kopiec[parent]);
+        bottomUp(parent);  // Rekurencyjnie kontynuuj przywracanie dla rodzica
+        }
+        
+    }
+}
+
+void MinHeap::topDown(int i) 
+{
+   int l = getLeft(i);
+    int r = getRight(i);
+    int g = i;
+
+    if (l != -1 && kopiec[l] > kopiec[i]) {
+        g = l;
+    }
+
+    if (r != -1 && kopiec[r] > kopiec[g]) {
+        g = r;
+    }
+
+    if (g != i) {
+        std::swap(kopiec[i], kopiec[g]);
+        bottomUp(g);
+    }  
+}
+
+std::ostream& operator<<(std::ostream& out, MinHeap& h) {
+    for (int i = 0; i < h.getSize(); i++) {
+        out << h.getValue(i) << " ";
+    }
+    return out;
+}
+
+int main() {
+    // Zadanie 1 - test
+    std::cout << std::endl << "Zadanie 1 - test" << std::endl;
+    MinHeap h;
+    std::cout << std::endl << "Kopiec przed operacją topDown: " << h;
+
+    // Test topDown
+    std::cout << std::endl << "Test topDown:" << std::endl;
+    h.topDown(0);
+
+    // Wyświetl kopiec po zastosowaniu topDown
+    std::cout << std::endl << "Kopiec po operacji topDown: " << h;
+
+    // Test bottomUp
+    std::cout << std::endl << "Test bottomUp:" << std::endl;
+    h.bottomUp(9);  // Przywracanie dla ostatniego elementu
+    std::cout << std::endl << "Kopiec po operacji bottomUp: " << h;
+
+    return 0;
+}
+*/
