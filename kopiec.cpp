@@ -291,3 +291,178 @@ int main() {
     return 0;
 }
 */
+kopiec versia 3
+/*#include <iostream>
+#include <algorithm>
+
+class MinHeap
+{
+private:
+    int* kopiec;
+    int capacity;
+    int size;
+
+public:
+    MinHeap(int c) : capacity(c), size(0)    // Initialize members in the constructor initializer list
+    {
+        kopiec = new int[capacity];
+    }
+
+    MinHeap() : MinHeap(11)  // Delegate to the parameterized constructor with a default capacity of 11
+    {
+        std::copy_n(new int[capacity]{1, 2, 4, 6, 5, 4, 7, 7, 7, 9, 6}, capacity, kopiec);
+        size = capacity;
+    }
+
+    bool empty()
+    {
+        return size == 0;
+    }
+
+    bool full()
+    {
+        return size == capacity;
+    }
+
+    int getLeft(int i)
+    {
+        if (2 * i + 1 < size)
+        {
+            return 2 * i + 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    int getRight(int i)
+    {
+        if (2 * i + 2 < size) // Removed semicolon after size
+        {
+            return 2 * i + 2;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    int getParent(int i)
+    {
+        if (i == 0)
+        {
+            return -1;
+        }
+        else
+        {
+            return (i - 1) / 2; // Corrected variable name from 'n' to 'i'
+        }
+    }
+
+    int getSize()
+    {
+        return size;
+    }
+
+    void setSize(int s)
+    {
+        size = s;
+    }
+
+    int getValue(int i)
+    {
+        return kopiec[i];
+    }
+
+    void setValue(int i, int x)
+    {
+        kopiec[i] = x;
+    }
+
+    void bottomUp(int n)
+    {
+        if (n > 0)
+        {
+            int p = getParent(n);
+
+            if (kopiec[n] > kopiec[p])
+            {
+                std::swap(kopiec[n], kopiec[p]);
+                bottomUp(p);
+            }
+        }
+    }
+
+    void topDown(int n)
+    {
+        int l = getLeft(n);
+        int r = getRight(n); // Corrected variable name from 'p' to 'r'
+        int g = n;
+
+        if (l != -1 && kopiec[l] > kopiec[n])
+        {
+            g = l;
+        }
+
+        if (r != -1 && kopiec[r] > kopiec[g]) // Corrected variable name from 'p' to 'r'
+        {
+            g = r;
+        }
+
+        if (g != n)
+        {
+            std::swap(kopiec[n], kopiec[g]);
+            topDown(g);
+        }
+    }
+
+    friend std::ostream& operator<<(std::ostream& out, const MinHeap& h);
+};
+
+std::ostream& operator<<(std::ostream& out, const MinHeap& h)
+{
+    for (int i = 0; i < h.size; ++i)
+    {
+        out << h.kopiec[i] << " ";
+    }
+    return out;
+}
+
+int main()
+{   
+    // Zadanie 1 - test
+    std::cout << std::endl << "Zadanie 1 - test" << std::endl;
+    MinHeap h;
+    std::cout << std::endl << "empty(): " << h.empty();
+    std::cout << std::endl << "full(): " << h.full();
+
+    // Test bottomUp and topDown
+    std::cout << std::endl << "Test bottomUp and topDown:" << std::endl;
+
+    // Modify the value at a specific position to violate the heap property
+    int positionToModify = 2;  // Choose the position to modify
+    int newValue = 8;          // Choose a new value
+    h.setValue(positionToModify, newValue);
+
+    // Display the heap before applying operations
+    std::cout << std::endl << "Kopiec przed operacją topDown/bottomUp: " << h;
+
+    // Test topDown
+    std::cout << std::endl << "Test topDown:" << std::endl;
+    h.topDown(0);
+
+    // Display the heap after applying topDown
+    std::cout << std::endl << "Kopiec po operacji topDown: " << h;
+
+    // Test bottomUp
+    std::cout << std::endl << "Test bottomUp:" << std::endl;
+    h.bottomUp(positionToModify);  // Restoring heap property for the modified position
+    std::cout << std::endl << "Kopiec po operacji bottomUp: " << h;
+
+    // Display the final state of the heap
+    std::cout << std::endl << "Final state of the heap: " << h;
+    
+    return 0;
+}
+*/
