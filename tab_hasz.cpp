@@ -9,44 +9,41 @@ private:
     int capacity;
     int size;
 public:
-    HashTable(int c);                // konstruktor tworzący pustą tablicę o pojemności c
-    bool empty();
-    int hashFunction(string s);        // funkcja haszująca dla klucza s
-    void insert(string s);            // wstawienie klucza s
-    void del(string s);                // usuwa element z kluczem s
-    string search(string s);        // wyszukuje i zwraca element z s
-    friend ostream& operator<<(ostream& out, HashTable& ht); // wypisuje tablicę (z numerami pól), pozostawia puste dla wolnych pól
-};
 
-HashTable::HashTable(int c) {
-    capacity = c;
-    size = 0;
-    t = new string[capacity];
-}
-
-bool HashTable::empty() {
-    return size == 0;
-}
-
-int HashTable::hashFunction(string s) {
-    int sum = 0;
-    for (char ch : s) {
-        sum += static_cast<int>(ch);
+    HashTable(int c)// konstruktor tworzący pustą tablicę o pojemności c
+    {
+        capacity=c;
+        size=0;
+        t=new string[capacity];
     }
-    cout<<sum%capacity<<endl;
-    return sum % capacity;
     
-}
-
-void HashTable::insert(string s) {
+    bool empty()
+    {   
+        return size ==0;
+    }
+    int full()
+    {
+        return size==capacity;
+    }
+    int hashFunction(string s)        // funkcja haszująca dla klucza s
+    {
+    int sum =0;
+    for (char ch :s)
+    {
+        sum+=static_cast<int>(ch);
+    }
+    return sum%capacity;
+    }
+    
+void insert(string s) {
     int index = hashFunction(s);
     int originalIndex = index;
 
     while (!t[index].empty()) {
-        index = (index + 1) % capacity; // próbkowanie liniowe
+        index = (index + 1) % capacity;
         if (index == originalIndex) {
-            cout << "Brak miejsca dla klucza: " << s << endl;
-            return; // brak miejsca w tablicy
+            cout << "brak miejsca w tablicy dla klucza: " << s << endl;
+            return;
         }
     }
 
@@ -54,77 +51,87 @@ void HashTable::insert(string s) {
     size++;
 }
 
-void HashTable::del(string s) {
+void del(string s) {
     int index = hashFunction(s);
     int originalIndex = index;
 
     while (!t[index].empty() && t[index] != s) {
         index = (index + 1) % capacity;
         if (index == originalIndex) {
-            cout << "Klucz do usunięcia nie istnieje: " << s << endl;
-            return; // klucz do usunięcia nie istnieje w tablicy
+            cout << "klucz do usunięcia nie istnieje: " << s << endl;
+            return;
         }
     }
 
     if (t[index] == s) {
-        t[index] = ""; // usuwamy klucz
+        t[index] = "";
         size--;
     }
 }
 
-string HashTable::search(string s) {
+string search(string s) {
     int index = hashFunction(s);
     int originalIndex = index;
 
     while (!t[index].empty() && t[index] != s) {
         index = (index + 1) % capacity;
         if (index == originalIndex) {
-            return "Brak klucza: " + s;
+            return "Brak klucza " + s;
         }
     }
 
     if (t[index] == s) {
         return t[index];
+    } else {
+        return "brak kluc za " + s;
     }
-
-    return "Brak klucza: " + s;
 }
 
-ostream& operator<<(ostream& out, HashTable& ht) {
-    for (int i = 0; i < ht.capacity; i++) {
+    
+    friend ostream& operator<<(ostream& out, HashTable& ht) // wypisuje tablicę (z numerami pól), pozostawia puste dla wolnych pól
+    {    for (int i = 0; i < ht.capacity; i++) {
         out << "[" << i << "]: " << ht.t[i] << endl;
     }
     return out;
-}
+    }
+    
+};
+
 
 int main() {
-    // Zadanie 1 - test
-    cout << "Zadanie 1 - test" << endl;
+    cout << "Zadanie 2 - test" << endl;
     {
-        int n = 10; // pojemność tablicy z haszowaniem
+        int n = 40; // Początkowa pojemność tablicy z haszowaniem
         HashTable h(n);
-        cout << "empty(): " << h.empty() << endl;
 
-        // Dodajemy element "example"
-        h.insert("example");
-        cout << "Po dodaniu 'example':\n" << h;
+        // Inicjalizacja danych do testowania
+        string dane[] = {"Julia", "Zuzanna", "Zofia", "Lena", "Maja", "Hanna", "Amelia", "Alicja", "Maria", "Aleksandra",
+                         "Oliwia", "Natalia", "Wiktoria", "Emilia", "Antonina", "Laura", "Pola", "Iga", "Anna", "Liliana",
+                         "Antoni", "Jakub", "Jan", "Szymon", "Franciszek", "Filip", "Aleksander", "Mikolaj", "Wojciech",
+                         "Kacper", "Adam", "Michal", "Marcel", "Stanislaw", "Wiktor", "Piotr", "Igor", "Leon", "Nikodem",
+                         "Mateusz"};
 
-        // Dodajemy element "test"
-        h.insert("test");
-         h.insert("test");
-          h.insert("test");
-        cout << "Po dodaniu 'test':\n" << h;
+        for (const auto& key : dane) {
+            h.insert(key);
+        }
 
-        // Usuwamy element "example"
-        h.del("example");
-        cout << "Po usunięciu 'example':\n" << h;
+        // Wyświetlenie tablicy po wstawieniu danych
+        cout << h;
 
-        // Szukamy elementu "test"
-        cout << "search(\"test\"): " << h.search("test") << endl;
+        // Test wyszukiwania dla kilku kluczy
+        cout << "search(\"Julia\"): " << h.search("Julia") << endl;
+        cout << "search(\"Adam\"): " << h.search("Adam") << endl;
+        cout << "search(\"Zofia\"): " << h.search("Zofia") << endl;
 
-        // Szukamy elementu "example"
-        cout << "search(\"example\"): " << h.search("example") << endl;
+        // Test usunięcia kilku kluczy
+        h.del("Lena");
+        h.del("Szymon");
+        h.del("Antoni");
+        
+        // Wyświetlenie tablicy po usunięciu danych
+        cout << "Po usunięciu kilku kluczy:\n" << h;
     }
 
     return 0;
 }
+
